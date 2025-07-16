@@ -39,3 +39,44 @@ That said, all logic is modularized and can easily be converted into a `.py` scr
 5. Outputs a `.txt` file with the final persona, citing sources for each insight
 
 ---
+
+## Notes on the Language Model Used
+
+To stay within resource and quota limits, this version uses a **lightweight LLM (`distilbart` from HuggingFace)** for summarization.
+
+While this model is effective for basic summarization, it doesn't have the deep contextual understanding that more powerful models like **GPT-4** or **Claude** offer.
+
+> 📌 **Using a stronger LLM** would significantly improve persona quality — especially in:
+- Recognizing subtle behavioral cues
+- Differentiating sarcasm, humor, or emotional tone
+- Inferring deeper psychological patterns
+
+This trade-off was a conscious decision to ensure the notebook is easy to run even without an OpenAI key.
+
+---
+
+## Tech Stack
+
+- `praw` – Reddit API wrapper for scraping
+- `transformers` – for summarization using `sshleifer/distilbart-cnn-12-6`
+- `tqdm` – for progress bars
+- `getpass` / `userdata.get()` – for secure, interactive credential input
+
+---
+
+## How to Use (Colab or Jupyter)
+
+1. Open the notebook in Google Colab or Jupyter  
+2. When prompted, securely input your Reddit API credentials  
+3. Paste a Reddit profile URL  
+4. Run the notebook  
+5. Download the final persona `.txt` file from the `output/` folder
+
+---
+
+## Future Work (If Time Permitted)
+
+- Add Named Entity Recognition (NER) and emotion analysis
+- Use a more advanced LLM like GPT-4 or Claude 3 for deeper understanding
+- Create an interactive Streamlit or Gradio web app
+- Include visual persona summary or infographic export
